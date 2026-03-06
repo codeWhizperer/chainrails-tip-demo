@@ -7,13 +7,13 @@ export async function POST(request: NextRequest) {
 
     Chainrails.config({
       api_key: process.env.CHAINRAILS_API_KEY || '',
-      env: 'production',
+      env: 'staging',
     })
 
     const session = await crapi.auth.getSessionToken({
       amount: amount ?? '0',
       recipient: process.env.WALLET_ADDRESS!,
-      destinationChain: "STARKNET",
+      destinationChain: "STARKNET_TESTNET",
       token: 'USDC',
     })
 
