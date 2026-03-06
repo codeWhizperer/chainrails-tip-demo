@@ -34,8 +34,6 @@ Fill in your values:
 ```
 CHAINRAILS_API_KEY=your_api_key_here
 WALLET_ADDRESS=0x...
-DESTINATION_CHAIN=BASE
-DESTINATION_TOKEN=USDC
 ```
 
 Get your API key at: https://dashboard.chainrails.io
