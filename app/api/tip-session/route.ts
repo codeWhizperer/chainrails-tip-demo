@@ -1,0 +1,28 @@
+import { Chainrails, crapi } from '@chainrails/sdk'
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function POST(request: NextRequest) {
+  try {
+    const { amount } = await request.json()
+
+    Chainrails.config({
+      api_key: process.env.CHAINRAILS_API_KEY || '',
+      env: 'production',
+    })
+
+    const session = await crapi.auth.getSessionToken({
+      amount: amount ?? '0',
+      recipient: process.env.WALLET_ADDRESS!,
+      destinationChain: "STARKNET",
+      token: 'USDC',
+    })
+
+    return NextResponse.json(session)
+  } catch (error) {
+    console.error('Session creation error:', error)
+    return NextResponse.json(
+      { error: 'Failed to create session' },
+      { status: 500 }
+    )
+  }
+}

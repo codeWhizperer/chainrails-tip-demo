@@ -1,0 +1,4 @@
+{
+  "/api/tip-session/route": "app/api/tip-session/route.js",
+  "/page": "app/page.js"
+}
